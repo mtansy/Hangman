@@ -42,7 +42,7 @@ def main_menu():
         regular_mode()
     elif choice == "2":
         print("Custom Words mode is not available yet.")
-    elif choise == "3":
+    elif choice == "3":
         print("Multiplayer mode is not available yet.")
     else:
         print("Invalid choice. Please enter a valid number.")
