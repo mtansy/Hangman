@@ -1,16 +1,9 @@
 # Hangman Game in Python3
 
 ## Table of Contents
-- [Getting Started](#getting-started)
 - [Features](#features)
 - [How to Play](#how-to-play)
 - [Setting Up the Project](#setting-up-the-project)
-- [Contributing](#contributing)
-- [License](#license)
-
-## Getting Started
-
-To get started, follow the instructions below.
 
 ## Features
 
