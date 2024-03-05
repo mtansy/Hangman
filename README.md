@@ -23,5 +23,5 @@
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/hangman-game.git
-   cd hangman-game
+   git clone https://github.com/mtansy/hangman.git
+   cd hangman
