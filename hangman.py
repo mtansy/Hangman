@@ -29,11 +29,28 @@ def choose_random_word():
     words = ["hangman", "python", "programming", "keyboard", "computer", "mouse"]
     return random.choice(words)
 
-def main():
+def main_menu():
+    print("Welcome to Hangman!")
+    print("Choose a game mode:")
+    print("1. Regular Words")
+    print("2. Custom Words (Coming Soon)")
+    print("3. Multiplayer (Coming Soon)")
+
+    choice = input("Enter the number of your choice: ")
+
+    if choice == "1":
+        regular_mode()
+    elif choice == "2":
+        print("Custom Words mode is not available yet.")
+    elif choise == "3":
+        print("Multiplayer mode is not available yet.")
+    else:
+        print("Invalid choice. Please enter a valid number.")
+
+def regular_mode():
     word_to_guess = choose_random_word()
     hangman_game = Hangman(word_to_guess)
 
-    print("Welcome to Hangman!")
     print("Try to guess the word.")
 
     while hangman_game.guesses_left > 0:
@@ -51,4 +68,4 @@ def main():
         print("Sorry, you ran out of guesses. The word was: {}".format(word_to_guess))
 
 if __name__ == "__main__":
-    main()
+    main_menu()
