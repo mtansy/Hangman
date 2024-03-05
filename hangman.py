@@ -26,7 +26,7 @@ class Hangman:
         return "Good guess! Current word: {}".format(self.display_word())
 
 def choose_random_word():
-    words = ["hangman", "python", "programming", "developer", "repository", "contribution"]
+    words = ["hangman", "python", "programming", "keyboard", "computer", "mouse"]
     return random.choice(words)
 
 def main():
