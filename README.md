@@ -1,11 +1,6 @@
 # Hangman Game in Python3
 This is a basic implementation of a childhood favorite - Hangman.
 
-## Table of Contents
-- [Features](#features)
-- [How to Play](#how-to-play)
-- [Setting Up the Project](#setting-up-the-project)
-
 ## Features
 
 1. Custom Word Support
