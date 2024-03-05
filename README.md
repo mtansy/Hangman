@@ -7,12 +7,11 @@
 
 ## Features
 
-1. Multiplayer Support
+1. Custom Word Support
 2. Difficulty Levels
-3. Graphical User Interface (GUI)
-4. Theme Customization
-5. Hint System
-6. Custom Words 
+3. Theme Customizatoin 
+4. Multiplayer Support
+5. GUI Implementation 
 
 ## How to Play
 
