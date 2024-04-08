@@ -80,4 +80,5 @@ def regular_mode():
 
 if __name__ == "__main__":
     main_menu()
+
     
