@@ -1,4 +1,4 @@
-# Hangman Game in Python3
+# Hangman Game in Python3.
 This is a basic implementation of a childhood favorite - Hangman.
 
 ## Features
