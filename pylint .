@@ -37,7 +37,7 @@ def lint_python_code(code):
     return linter.errors
 
 if __name__ == "__main__":
-    with open("your_python_file.py", "r") as file:
+    with open("hangman.py", "r") as file:
         python_code = file.read()
 
     errors = lint_python_code(python_code)
