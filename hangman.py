@@ -1,5 +1,7 @@
 import random
 
+"""A simple Hangman game implementation."""
+
 class Hangman:
     """A class representing the Hangman game."""
 
