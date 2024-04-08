@@ -25,9 +25,9 @@ jobs:
           pip install pylint
 
       - name: Run Unit Tests
-        run: python3 unit_tests.py
+        run: python3 hangManUnitTest.py
         continue-on-error: true  # Continue even if tests fail, we'll check the status later
 
       - name: Run Linter
-        run: pylint .
+        run: pylint hangman.py
         continue-on-error: true  # Continue even if linting fails, we'll check the status later
