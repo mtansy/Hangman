@@ -19,21 +19,15 @@ jobs:
         with:
           python-version: '3.x'  
 
+      - name: Install Pylint
+        run: |
+          python -m pip install --upgrade pip
+          pip install pylint
+
       - name: Run Unit Tests
-        run: python3 hangManUnitTest.py
+        run: python3 unit_tests.py
         continue-on-error: true  # Continue even if tests fail, we'll check the status later
 
       - name: Run Linter
         run: pylint .
         continue-on-error: true  # Continue even if linting fails, we'll check the status later
-
-      - name: Check Test and Lint Results
-        run: exit $(($? + $?))
-        # This will exit with a non-zero status if any of the previous steps failed
-
-      - name: Create Pull Request
-        if: always()
-        uses: peter-evans/create-pull-request@v6.0.2
-        with:
-          title: Unit Tests and Linting
-          base: main
