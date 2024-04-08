@@ -37,16 +37,16 @@ class Hangman:
 
         if letter in self.guessed_letters:
             return "You already guessed that letter."
-        
+
         self.guessed_letters.add(letter)
 
         if letter not in self.word:
             self.guesses_left -= 1
             return f"Incorrect guess. {self.guesses_left} guesses left."
-        
+
         if set(self.word) == self.guessed_letters:
             return f"Congratulations! You guessed the word: {self.word}"
-        
+
         return f"Good guess! Current word: {self.display_word()}"
 
 def choose_random_word():
