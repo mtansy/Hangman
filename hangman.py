@@ -6,6 +6,72 @@ class Hangman:
         self.word = word.upper()
         self.guesses_left = 7
         self.guessed_letters = set()
+        self.hangman_figures = [
+            """
+               +---+
+                   |
+                   |
+                   |
+                   |
+                   |
+            ========""",
+            """
+               +---+
+               |   |
+                   |
+                   |
+                   |
+                   |
+            ========""",
+            """
+               +---+
+               |   |
+               O   |
+                   |
+                   |
+                   |
+            ========""",
+            """
+               +---+
+               |   |
+               O   |
+               |   |
+                   |
+                   |
+            ========""",
+            """
+               +---+
+               |   |
+               O   |
+              /|   |
+                   |
+                   |
+            ========""",
+            """
+               +---+
+               |   |
+               O   |
+              /|\\  |
+                   |
+                   |
+            ========""",
+            """
+               +---+
+               |   |
+               O   |
+              /|\\  |
+              /    |
+                   |
+            ========""",
+            """
+               +---+
+               |   |
+               O   |
+              /|\\  |
+              / \\  |
+                   |
+            ========"""
+        ]
 
     def display_word(self):
         # Display the current state of the word, revealing guessed letters and hiding the rest.
@@ -13,10 +79,8 @@ class Hangman:
 
     def make_guess(self, letter):
         # Process a player's guess and return feedback messages.
-
-        # Convert the guess to uppercase for case-insensitivity.
         letter = letter.upper()
-
+        
         # Check if the letter has already been guessed.
         if letter in self.guessed_letters:
             return "You already guessed that letter."
@@ -35,6 +99,10 @@ class Hangman:
         
         # If the guessed letter is correct, return feedback and the current state of the word.
         return "Good guess! Current word: {}".format(self.display_word())
+
+    def display_hangman(self):
+        # Display the current hangman figure based on the number of guesses left.
+        print(self.hangman_figures[7 - self.guesses_left])
 
 def choose_random_word():
     # Choose a random word from a predefined list.
@@ -69,6 +137,9 @@ def regular_mode():
 
     # Main game loop where the player makes guesses until they win or run out of guesses.
     while hangman_game.guesses_left > 0:
+        # Display the current hangman figure
+        hangman_game.display_hangman()
+        
         print("\nWord: {}".format(hangman_game.display_word()))
         guess = input("Enter a letter: ")
 

@@ -6,6 +6,8 @@ class TestHangman(unittest.TestCase):
     def setUp(self):
         self.hangman = Hangman("TEST")
 
+    
+
     def test_display_word(self):
         self.assertEqual(self.hangman.display_word(), "____")
 
@@ -32,6 +34,38 @@ class TestHangman(unittest.TestCase):
             self.assertEqual(self.hangman.make_guess("Z"), "You already guessed that letter.")
             self.assertEqual(self.hangman.guesses_left, 6)
             self.assertEqual(self.hangman.guessed_letters, {"T", "E", "Z"})
+
+    def test_display_word_initial(self):
+        # Test the initial display of the word (should be all underscores)
+        expected = "____"  # Corresponding to the word 'TEST'
+        self.assertEqual(self.hangman.display_word(), expected)
+
+    def test_make_guess_correct(self):
+        # Test guessing a correct letter
+        guess = 'T'
+        result = self.hangman.make_guess(guess)
+        expected_display = "T__T"  # Corresponding to the word 'TEST' with guessed letter 'T'
+        self.assertEqual(result, f"Good guess! Current word: {expected_display}")
+        self.assertIn(guess, self.hangman.guessed_letters)
+        self.assertEqual(self.hangman.guesses_left, 7)
+
+    def test_make_guess_incorrect(self):
+        # Test guessing an incorrect letter
+        guess = 'Z'
+        result = self.hangman.make_guess(guess)
+        self.assertEqual(result, "Incorrect guess. 6 guesses left.")
+        self.assertIn(guess, self.hangman.guessed_letters)
+        self.assertEqual(self.hangman.guesses_left, 6)
+
+    def test_make_guess_repeated(self):
+        # Test guessing a letter that was already guessed
+        guess = 'T'
+        self.hangman.make_guess(guess)  # Guess once
+        result = self.hangman.make_guess(guess)  # Guess again
+        self.assertEqual(result, "You already guessed that letter.")
+        self.assertEqual(self.hangman.guesses_left, 7)  # Guesses left should not change
+
+
 
 if __name__ == "__main__":
     unittest.main()
