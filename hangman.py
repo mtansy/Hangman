@@ -20,7 +20,7 @@ class Hangman:
         # Check if the letter has already been guessed.
         if letter in self.guessed_letters:
             return "You already guessed that letter."
-        
+
         # Add the guessed letter to the set of guessed letters.
         self.guessed_letters.add(letter)
 
@@ -28,11 +28,11 @@ class Hangman:
         if letter not in self.word:
             self.guesses_left -= 1
             return "Incorrect guess. {} guesses left.".format(self.guesses_left)
-        
+
         # Check if all letters in the word have been guessed.
         if set(self.word) == self.guessed_letters:
             return "Congratulations! You guessed the word: {}".format(self.word)
-        
+
         # If the guessed letter is correct, return feedback and the current state of the word.
         return "Good guess! Current word: {}".format(self.display_word())
 
@@ -61,28 +61,36 @@ def main_menu():
         print("Invalid choice. Please enter a valid number.")
 
 def regular_mode():
-    # Start a regular Hangman game with a randomly chosen word.
-    word_to_guess = choose_random_word()
-    hangman_game = Hangman(word_to_guess)
+    while True:  # Add a loop to allow replaying
+        # Start a regular Hangman game with a randomly chosen word.
+        word_to_guess = choose_random_word()
+        hangman_game = Hangman(word_to_guess)
 
-    print("Try to guess the word.")
+        print("Try to guess the word.")
 
-    # Main game loop where the player makes guesses until they win or run out of guesses.
-    while hangman_game.guesses_left > 0:
-        print("\nWord: {}".format(hangman_game.display_word()))
-        guess = input("Enter a letter: ")
+        # Main game loop where the player makes guesses until they win or run out of guesses.
+        while hangman_game.guesses_left > 0:
+            print("\nWord: {}".format(hangman_game.display_word()))
+            guess = input("Enter a letter: ")
 
-        result = hangman_game.make_guess(guess)
-        print(result)
+            result = hangman_game.make_guess(guess)
+            print(result)
 
-        # Check if all letters have been guessed, and congratulate the player.
-        if '_' not in hangman_game.display_word():
-            print("Congratulations! You guessed the word.")
-            break
+            # Check if all letters have been guessed, and congratulate the player.
+            if '_' not in hangman_game.display_word():
+                print("Congratulations! You guessed the word.")
+                break
 
-    # If the loop ends and there are still hidden letters, reveal the word.
-    if '_' in hangman_game.display_word():
-        print("Sorry, you ran out of guesses. The word was: {}".format(word_to_guess))
+        # If the loop ends and there are still hidden letters, reveal the word.
+        if '_' in hangman_game.display_word():
+            print("Sorry, you ran out of guesses. The word was: {}".format(word_to_guess))
+
+        play_again = input("Do you want to play again? (yes/no): ")
+        if play_again.lower() != 'yes':
+            break  # Exit the loop if the player doesn't want to play again
+
+    main_menu()  # Return to the main menu after the player finishes playing
+
 
 if __name__ == "__main__":
     main_menu()
